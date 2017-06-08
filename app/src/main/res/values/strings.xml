@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CustomButtonGigaPromo</string>
+    <string name="bold_in_strings"><Data><![CDATA[Middle is Bold <b>Bold</b>, that was <b>Bold</b> bold!]]> </Data></string>
+</resources>
