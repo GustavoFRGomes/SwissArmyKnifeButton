@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0221040f-d058-4453-b38f-97fd23feb319" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/JosefinSlab-Bold.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/JosefinSlab-Regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/JosefinSlab-Thin.ttf" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/jaggedlabs/gustavogomes/swissarmyknifebutton/assets/fonts/JosefinSlab-Bold.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/jaggedlabs/gustavogomes/swissarmyknifebutton/assets/fonts/JosefinSlab-Regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/jaggedlabs/gustavogomes/swissarmyknifebutton/assets/fonts/JosefinSlab-Thin.ttf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SwissArmyKnifeButton.iws" />
@@ -2155,6 +2149,14 @@
       <option name="presentableId" value="Default" />
       <updated>1496952479039</updated>
     </task>
+    <task id="LOCAL-00001" summary="Moved the font files which were not in the correct spot.">
+      <created>1496952958544</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1496952958544</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2200,6 +2202,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Moved the font files which were not in the correct spot." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moved the font files which were not in the correct spot." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
