@@ -6,15 +6,13 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.text.Spannable;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,7 +44,6 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
     private boolean idleState = true;
     private boolean dismissLoadingCalled = false;
     private Date currentLoadingIterationDate;
-    private Date auxDate;
 
     // Loading Overlay
     private boolean isLoading = false;
@@ -84,9 +81,9 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
             this.text = this.getText().toString();
 
-            int possbileAuxTextId = customAttrs.getResourceId(R.styleable.SwissArmyKnifeButton_auxText, -1);
-            if (possbileAuxTextId != -1) {
-                this.auxText = this.getContext().getText(possbileAuxTextId);
+            int possibleAuxTextId = customAttrs.getResourceId(R.styleable.SwissArmyKnifeButton_auxText, -1);
+            if (possibleAuxTextId != -1) {
+                this.auxText = this.getContext().getText(possibleAuxTextId);
             }
             else {
                 this.auxText = customAttrs.getString(R.styleable.SwissArmyKnifeButton_auxText);
@@ -118,8 +115,12 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
         } else {
             super.setAllCaps(false);
 
-            this.setGravity(Gravity.START);
             this.setText(this.text);
+
+            this.setGravity(Gravity.START);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                this.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            }
         }
     }
 
@@ -209,21 +210,7 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
     @Override
     public void run() {
-        Log.d("SWISS_BUTTON", new java.util.Date().toString());
-//        if (!this.idleState)
-//        {
-//            this.invalidate();
-//        }
-//
-//        Date timeFrame = new Date();
-//
-//        if (this.isLoading
-//                && this.lastLoadingTimeFrame.hasTimeFramePassed(timeFrame)
-//                && this.getCurrentAlpha(this.getCurrentTextColor()) == 0)
-//        {
-//            this.lastLoadingTimeFrame.updateTimeFrame(timeFrame);
-            this.invalidate();
-//        }
+        this.invalidate();
     }
 
     @Override
@@ -241,11 +228,8 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
         if (this.isLoading && this.getCurrentAlpha(this.getCurrentTextColor()) == 0)
         {
-//            if (this.lastLoadingTimeFrame == null || this.lastLoadingTimeFrame != null && !this.lastLoadingTimeFrame.getHasExecuted())
-//                this.lastLoadingTimeFrame = new LoadingTimeFrame(new Date(), SwissArmyKnifeButton.alphaAnimLength);
-
             this.drawLoadingOverlay(canvas);
-            this.auxDate = new Date();
+            Date auxDate = new Date();
 
             if (this.currentLoadingIterationDate.getTime() + SwissArmyKnifeButton.loadingAnimLength <= auxDate.getTime()) {
                 this.postDelayed(this, SwissArmyKnifeButton.loadingAnimLength);
@@ -257,8 +241,6 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
             this.loadingColors[0] = this.adjustAlphaValue(this.originalColor, .33f);
             this.loadingColors[1] = this.adjustAlphaValue(this.originalColor, .22f);
             this.loadingColors[2] = this.adjustAlphaValue(this.originalColor, .11f);
-
-//            this.lastLoadingTimeFrame = null;
         }
 
         if (!this.hasSingleText) {
@@ -334,16 +316,16 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
             ArrayList<Pair<Integer, Integer>> boldTags = this.getTagPairs(boldStartTags, boldEndTags);
 
-            ArrayList<BoldText> splittedStringWithBolds = this.splitStringsForBoldSeparation(this.auxText.toString(), boldTags);
+            ArrayList<BoldText> splitStringWithBolds = this.splitStringsForBoldSeparation(this.auxText.toString(), boldTags);
             float horizontalOffset = 0.0f;
             Paint currentPaint;
             String currentBoldString;
 
-            for (int i=splittedStringWithBolds.size() - 1; i >= 0; i--)
+            for (int i=splitStringWithBolds.size() - 1; i >= 0; i--)
             {
-                currentBoldString = splittedStringWithBolds.get(i).text;
-                currentPaint = (splittedStringWithBolds.get(i).isBold ? boldTextPaint : textPaint);
-                this.drawPreceedingText(canvas, horizontalOffset, currentPaint, currentBoldString);
+                currentBoldString = splitStringWithBolds.get(i).text;
+                currentPaint = (splitStringWithBolds.get(i).isBold ? boldTextPaint : textPaint);
+                this.drawPrecedingText(canvas, horizontalOffset, currentPaint, currentBoldString);
                 horizontalOffset += this.getTextMeasurement(
                         currentPaint,
                         currentBoldString);
@@ -351,10 +333,10 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
         }
     }
 
-    private void drawPreceedingText(Canvas canvas, float startOffset, Paint textPaint, String stringToDraw)
+    private void drawPrecedingText(Canvas canvas, float startOffset, Paint textPaint, String stringToDraw)
     {
         int paddingEnd = this.getViewPaddingEnd();
-        int paddingTop = this.getPaddingTop();
+        int paddingTop = this.getViewPaddingTop();
 
         canvas.drawText(stringToDraw, 0, stringToDraw.length(),
                 (this.getX() + this.getWidth() - paddingEnd - startOffset),
@@ -364,38 +346,39 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
     private ArrayList<BoldText> splitStringsForBoldSeparation(String originalString, ArrayList<Pair<Integer, Integer>> boldTags)
     {
-        //FIXME: Instead of submitting the originalString we are using the auxText within the object. Maybe choose one approach and stick with it.
         ArrayList<BoldText> splitedString = new ArrayList<>();
         String currentBoldString;
 
+        final int boldStartTagLength = SwissArmyKnifeButton.BOLD_START_TAG.length();
         final int boldEndTagLength = SwissArmyKnifeButton.BOLD_END_TAG.length();
 
         for (int i=0; i < boldTags.size(); i++)
         {
 
             if (i == 0 && boldTags.get(i).first != 0
-                    || boldTags.get(i-1).second + boldEndTagLength != boldTags.get(i).first)
+                    || i != 0 && boldTags.get(i-1).second + boldEndTagLength != boldTags.get(i).first)
             {
                 if (i == 0)
                 {
-                    currentBoldString = this.auxText.toString().substring(0, boldTags.get(i).first);
+                    currentBoldString = originalString.substring(0, boldTags.get(i).first);
                 }
                 else
                 {
-                    currentBoldString = this.auxText.toString().substring(boldTags.get(i-1).second + boldEndTagLength, boldTags.get(i).first);
+                    currentBoldString = originalString.substring(boldTags.get(i-1).second + boldEndTagLength, boldTags.get(i).first);
                 }
                 splitedString.add(new BoldText(currentBoldString, false));
             }
 
-            currentBoldString = this.auxText.toString().substring(boldTags.get(i).first + boldEndTagLength,
+            currentBoldString = originalString.substring(
+                    boldTags.get(i).first + boldStartTagLength,
                     boldTags.get(i).second);
+
             splitedString.add(new BoldText(currentBoldString, true));
 
-
-            if (i == boldTags.size() - 1 && boldTags.get(i).second + SwissArmyKnifeButton.BOLD_END_TAG.length() < this.auxText.length())
+            if (i == boldTags.size() - 1 && boldTags.get(i).second + SwissArmyKnifeButton.BOLD_END_TAG.length() < originalString.length())
             {
-                currentBoldString = this.auxText.toString().substring(boldTags.get(i).second + boldEndTagLength,
-                        this.auxText.length() - 1);
+                currentBoldString = originalString.substring(boldTags.get(i).second + boldEndTagLength,
+                        originalString.length() - 1);
                 splitedString.add(new BoldText(currentBoldString, false));
             }
         }
@@ -510,7 +493,13 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
     private int getViewPaddingEnd()
     {
 
-        return (this.isLayoutRTL() ? this.getPaddingLeft() : this.getPaddingRight());
+        return (int) this.getDpFromPixels((this.isLayoutRTL() ? this.getPaddingLeft() : this.getPaddingRight()));
+    }
+
+    private int getViewPaddingTop()
+    {
+//        return (int) this.getDpFromPixels(this.getPaddingTop());
+        return (this.getPaddingTop());
     }
 
     private void performFadeOut()
@@ -577,12 +566,21 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
         return getResources().getDisplayMetrics().density;
     }
 
+    // FIXME: This should actually shield the developer and instead of overriding it will be available even for API 15 and simply do the setGravity.
+    @Override
+    public void setTextAlignment(int textAlignment){
+        if (this.hasSingleText) {
+            super.setTextAlignment(textAlignment);
+        }
+        // Don't do anything whenever the text is not singleLine. Simply ignore Alignment.
+    }
+
     private class BoldText
     {
-        public String text;
-        public boolean isBold;
+        String text;
+        boolean isBold;
 
-        public BoldText (String text, boolean isBold)
+        BoldText (String text, boolean isBold)
         {
             this.text = text;
             this.isBold = isBold;

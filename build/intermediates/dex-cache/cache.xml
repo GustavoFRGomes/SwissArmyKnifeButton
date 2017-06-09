@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/SwissArmyKnifeButton/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b0110168cce2fe25b126614e207966cfa72026b6">
-        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_ee6c56b503ab9d53bd70ad8d137e23ad6f300dfd/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/SwissArmyKnifeButton/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
-        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_7ad24049c5d291803d9ef2a13da64519b5875557/classes.dex" />
+        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_924febb47328837167d26343fa9954c8a2d355b4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="abc8bb7b5cd55489095f690e94c10e43801784bb">
+        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_5e73a89baada580b48481726bbcbd9f73c700327/classes.dex" />
     </item>
 
 </items>

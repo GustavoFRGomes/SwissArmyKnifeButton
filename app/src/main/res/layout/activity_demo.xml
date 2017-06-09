@@ -34,8 +34,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:text="@string/bold_in_strings"
-        android:textAlignment="center"/>
+        android:text="Text"
+        android:textAlignment="center"
+        app:auxText="@string/bold_small_string"/>
 
     <View
         android:layout_height="20dp"
