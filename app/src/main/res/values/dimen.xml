@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toolbar_height">50dp</dimen>
+
+    <!-- MARGIN DIMENSIONS -->
+    <dimen name="margin_xxsmall">2dp</dimen>
+    <dimen name="margin_xsmall">5dp</dimen>
+    <dimen name="margin_xhsmall">7dp</dimen>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_medium_small">14dp</dimen>
+    <dimen name="margin_medium">20dp</dimen>
+    <dimen name="margin_medium_large">30dp</dimen>
+    <dimen name="margin_large">40dp</dimen>
+    <dimen name="margin_xlarge">60dp</dimen>
+
+    <dimen name="margin_xxsmall_negative">-2dp</dimen>
+    <dimen name="margin_xsmall_negative">-5dp</dimen>
+    <dimen name="margin_xhsmall_negative">-8dp</dimen>
+    <dimen name="margin_small_negative">-10dp</dimen>
+    <dimen name="margin_medium_small_negative">-14dp</dimen>
+    <dimen name="margin_medium_negative">-20dp</dimen>
+    <dimen name="margin_medium_large_negative">-30dp</dimen>
+    <dimen name="margin_large_negative">-40dp</dimen>
+    <dimen name="margin_xlarge_negative">-60dp</dimen>
+
+    <!-- TEXT DIMENSIONS -->
+    <dimen name="text_xlarge">36sp</dimen>
+    <dimen name="text_large">30sp</dimen>
+    <dimen name="text_medium_large">24sp</dimen>
+    <dimen name="text_medium">18sp</dimen>
+    <dimen name="text_medium_small">15sp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="text_xsmall">10sp</dimen>
+
+    <!-- POPUP -->
+    <dimen name="popup_max_width">250dp</dimen>
+    <dimen name="popup_corner_radius">5dp</dimen>
+
+
+    <!-- BUTTONS -->
+    <dimen name="button_corner_radius">4dp</dimen>
+
+    <!-- CONTAINER -->
+    <dimen name="container_radius">4dp</dimen>
+
+    <!-- TOAST -->
+    <dimen name="toast_radius">@dimen/margin_medium</dimen>
+</resources>

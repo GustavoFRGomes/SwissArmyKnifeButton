@@ -3,4 +3,7 @@
     <string name="bold_in_strings"><Data><![CDATA[Middle is Bold <b>Bold</b>, that was <b>Bold</b> bold!]]> </Data></string>
     <string name="bold_small_string"><Data><![CDATA[<b>Bold</b>]]> </Data></string>
 
+    <string name="login">Login</string>
+    <string name="new_game">New Game</string>
+
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <gradient
+                android:startColor="@color/buttonMainTopHighlight"
+                android:endColor="@color/buttonMainBottomHighlight"
+                android:angle="90" />
+            <padding
+                android:left="@dimen/margin_small"
+                android:right="@dimen/margin_small"
+                android:top="@dimen/margin_small"
+                android:bottom="@dimen/margin_small"/>
+            <corners android:radius="@dimen/button_corner_radius"/>
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <gradient
+                android:startColor="@color/buttonMainTopDisabled"
+                android:endColor="@color/buttonMainBottomDisabled"
+                android:angle="90" />
+            <padding
+                android:left="@dimen/margin_small"
+                android:right="@dimen/margin_small"
+                android:top="@dimen/margin_small"
+                android:bottom="@dimen/margin_small"/>
+            <corners android:radius="@dimen/button_corner_radius"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient
+                android:startColor="@color/buttonMainTop"
+                android:endColor="@color/buttonMainBottom"
+                android:angle="90" />
+            <padding
+                android:left="@dimen/margin_small"
+                android:right="@dimen/margin_small"
+                android:top="@dimen/margin_small"
+                android:bottom="@dimen/margin_small"/>
+            <corners android:radius="@dimen/button_corner_radius"/>
+        </shape>
+    </item>
+</selector>

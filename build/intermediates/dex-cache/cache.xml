@@ -6,6 +6,24 @@
         jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
+        revision="25.0.3"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_924febb47328837167d26343fa9954c8a2d355b4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/gustavogomes/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_a7f8f3facb6f3670c9a3a31e8de1e8aef5f38e61/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
         revision="25.0.2"
         sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
         <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_924febb47328837167d26343fa9954c8a2d355b4/classes.dex" />
@@ -16,6 +34,24 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
+        sha1="abc8bb7b5cd55489095f690e94c10e43801784bb">
+        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_5e73a89baada580b48481726bbcbd9f73c700327/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/gustavogomes/.android/build-cache/d822449562de5c47c8c67541426969f2e48b1a1e/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3db851bed2fab0df5a7b713b8a1d3fb394883070/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
         sha1="abc8bb7b5cd55489095f690e94c10e43801784bb">
         <dex dex="/Users/gustavogomes/Documents/projects/Android/SwissArmyKnifeButton/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_5e73a89baada580b48481726bbcbd9f73c700327/classes.dex" />
     </item>

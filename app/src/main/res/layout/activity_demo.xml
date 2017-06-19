@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.jaggedlabs.gustavogomes.swissarmyknifebutton.Demo">
 
     <TextView
@@ -27,20 +28,38 @@
     <!--fontPath="fonts/JosefinSlab-Regular.ttf"-->
     <!--app:auxText="@string/bold_in_strings"/>-->
 
+    <!--<com.jaggedlabs.gustavogomes.swissarmyknifebutton.SwissArmyKnifeButton-->
+        <!--android:id="@+id/amazing_button"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:text="Text"-->
+        <!--android:textAlignment="center"-->
+        <!--app:auxText="@string/bold_small_string"/>-->
+
     <com.jaggedlabs.gustavogomes.swissarmyknifebutton.SwissArmyKnifeButton
-        android:id="@+id/amazing_button"
+        android:id="@+id/new_game_button"
+        style="@style/AppTheme.Button.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="Text"
-        android:textAlignment="center"
-        app:auxText="@string/bold_small_string"/>
+        android:layout_marginLeft="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium"
+        android:text="@string/new_game"
+        android:onClick="newGameClicked"
+        app:auxText="@string/bold_in_strings"/>
 
     <View
         android:layout_height="20dp"
         android:layout_width="match_parent" />
+
+    <com.jaggedlabs.gustavogomes.swissarmyknifebutton.LoadingOverlayView
+        android:id="@+id/loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/black" />
 
     <com.jaggedlabs.gustavogomes.swissarmyknifebutton.SwissArmyKnifeButton
         android:layout_width="match_parent"
@@ -57,4 +76,4 @@
         android:text="@string/bold_in_strings"
         android:textColor="#FFFFFF"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

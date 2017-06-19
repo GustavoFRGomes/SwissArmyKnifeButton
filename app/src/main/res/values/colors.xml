@@ -3,4 +3,86 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="title">@color/gravel</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="altLightColor">#9F9E9F</color>
+
+    <color name="toast">#312C32</color>
+    <color name="error">#ed1c24</color>
+    <color name="toast_error">@color/error</color>
+    <color name="success">#66BB6A</color>
+
+    <!-- BACKGROUNDS -->
+    <color name="mainBackground">#FFFFFF</color>
+    <color name="mainBackgroundTop">#EBF8FF</color>
+    <color name="mainBackgroundBottom">#FFFFFF</color>
+    <color name="altBackground">#E6E6E6</color>
+
+    <!-- TOOLBAR -->
+    <color name="toolbarTop">#EBF8FF</color>
+    <color name="toolbarBottom">#95DAFE</color>
+
+    <!-- GENERAL COLORS -->
+    <color name="primaryColor">#95DAFE</color>
+    <color name="primaryColorDark">#87BEDB</color>
+    <color name="primaryColorLight">#D6F1FF</color>
+    <color name="secondaryColor">#DBAD83</color>
+    <color name="secondaryColorDark">#BF9A78</color>
+    <color name="secondaryColorLight">#F1DFCF</color>
+    <color name="gravel">#312C32</color>
+    <color name="notificationBadge">#ed1c24</color>
+
+    <!-- SIDE MENU -->
+    <color name="sideMenu">@color/gravel</color>
+    <color name="sideMenuText">#FFFFFF</color>
+    <color name="sideMenuValueText">#FFFFFF</color>
+    <color name="sideMenuUnderline">#635866</color>
+    <color name="sideMenuSectionHeaderText">#635866</color>
+
+    <color name="welcomeOnGoingGame">#52C7B8</color>
+    <color name="questionBackground">#F8EFE8</color>
+    <color name="questionFromMultiplyBackground">#6ab7ff</color>
+
+
+    <!-- POPUP -->
+    <color name="popupDim">#66000000</color>
+    <color name="popupBackground">#FFFFFF</color>
+    <color name="popupPrimaryButton">@color/primaryColor</color>
+    <color name="popupPrimaryButtonPressed">@color/primaryColorDark</color>
+    <color name="popupSecondaryButton">@color/white</color>
+    <color name="popupSecondaryButtonPressed">@color/white</color>
+
+    <!-- BUTTON -->
+    <color name="buttonPrimary">@color/primaryColor</color>
+    <color name="buttonPrimaryDisabled">@color/primaryColorLight</color>
+    <color name="buttonPrimaryHighlight">@color/primaryColorDark</color>
+    <color name="buttonPrimaryText">#312C32</color>
+    <color name="buttonPrimaryTextDisabled">#C5DDEB</color>
+    <color name="buttonPrimaryTextHighlight">#312C32</color>
+
+    <color name="buttonSecondary">@color/secondaryColor</color>
+    <color name="buttonSecondaryDisabled">@color/secondaryColorLight</color>
+    <color name="buttonSecondaryHighlight">@color/secondaryColorDark</color>
+    <color name="buttonSecondaryText">#312C32</color>
+    <color name="buttonSecondaryTextDisabled">#DDCDBF</color>
+    <color name="buttonSecondaryTextHighlight">#312C32</color>
+
+
+    <color name="buttonMainTop">#F6AF44</color>
+    <color name="buttonMainBottom">#F6CC44</color>
+    <color name="buttonMainTopHighlight">#D49B45</color>
+    <color name="buttonMainBottomHighlight">#D4B346</color>
+    <color name="buttonMainTopDisabled">#FBDFB6</color>
+    <color name="buttonMainBottomDisabled">#FBEBB6</color>
+    <color name="buttonMainText">#312C32</color>
+    <color name="buttonMainTextDisabled">#E2CFA4</color>
+    <color name="buttonMainTextHighlight">#312C32</color>
+
+    <!-- TEXTFIELD -->
+    <color name="textFieldBackground">#F2F2F2</color>
+
+
 </resources>

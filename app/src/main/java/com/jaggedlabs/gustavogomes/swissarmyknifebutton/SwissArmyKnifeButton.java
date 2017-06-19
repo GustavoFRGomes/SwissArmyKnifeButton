@@ -5,12 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.util.Pair;
 import android.support.v4.view.ViewCompat;
 import android.text.Spannable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 
@@ -35,6 +37,8 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
     private static float LOADING_CIRCLE_RADIUS = 10;
     private static float LOADING_CIRCLE_PADDING = 10;
+    private static float loadingCircleRadiusScalingFactor = 0.5f;
+    private int loadingCircleDiameter;
 
     private boolean hasSingleText;
     private CharSequence auxText;
@@ -97,6 +101,8 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
             this.loadingColors[2] = this.adjustAlphaValue(this.originalColor, .11f);
 
             this.currentLoadingIterationDate = new Date();
+
+            this.loadingCircleDiameter = (this.getMeasuredHeight() > this.getMeasuredWidth() ? this.getMeasuredWidth() : this.getMeasuredHeight());
 
             this.setButtonText();
             this.invalidate();
@@ -263,42 +269,52 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
     private void drawLoadingOverlay(Canvas canvas)
     {
         int paddingTop = this.getPaddingTop();
-        float loadingHeight = (this.getY() + this.getHeight() + paddingTop / 2) / 2 - (SwissArmyKnifeButton.LOADING_CIRCLE_RADIUS / 2) / 2;
+        float loadingHeight = (this.getHeight() + this.pxToDp(paddingTop) / 2) / 2 - (SwissArmyKnifeButton.LOADING_CIRCLE_RADIUS / 2) / 2;
 
         Paint loadingCirclesPaint = new Paint();
         loadingCirclesPaint.setColor(this.originalColor);
         loadingCirclesPaint.setAntiAlias(true);
         loadingCirclesPaint.setStyle(Paint.Style.FILL);
 
-        float circleDiameter = this.getDpFromPixels(SwissArmyKnifeButton.LOADING_CIRCLE_RADIUS);
+        float circleRadius = this.pxToDp(this.getScaledRadius(canvas));
+        float circleDiameter =  circleRadius * 2;
 
         float[] circleHorizontalPosition = {
-                (float) (((this.getX() + this.getWidth()) / 2) - (1.5 * circleDiameter) - this.getLoadingCircleRadius()),
-                ((this.getX() + this.getWidth()) / 2),
-                (float) (((this.getX() + this.getWidth()) / 2) + (1.5 * circleDiameter) + this.getLoadingCircleRadius())
+                (float) (((this.getWidth()) / 2) - (1.5 * circleDiameter)),
+                ((this.getWidth()) / 2),
+                (float) (((this.getWidth()) / 2) + (1.5 * circleDiameter))
         };
 
-
         loadingCirclesPaint.setColor(this.loadingColors[0]);
-        canvas.drawCircle(circleHorizontalPosition[0], loadingHeight, this.getLoadingCircleRadius(), loadingCirclesPaint);
+        canvas.drawCircle(circleHorizontalPosition[0], loadingHeight, circleRadius, loadingCirclesPaint);
 
         loadingCirclesPaint.setColor(this.loadingColors[1]);
-        canvas.drawCircle(circleHorizontalPosition[1], loadingHeight, this.getLoadingCircleRadius(), loadingCirclesPaint);
+        canvas.drawCircle(circleHorizontalPosition[1], loadingHeight, circleRadius, loadingCirclesPaint);
 
         loadingCirclesPaint.setColor(this.loadingColors[2]);
-        canvas.drawCircle(circleHorizontalPosition[2], loadingHeight, this.getLoadingCircleRadius(), loadingCirclesPaint);
+        canvas.drawCircle(circleHorizontalPosition[2], loadingHeight, circleRadius, loadingCirclesPaint);
 
         this.updateLoadingColors();
     }
 
     private void drawLeftText(Canvas canvas)
     {
-        int paddingTop = this.getPaddingTop();
+        int paddingTop = this.pxToDp(this.getPaddingTop());
         int paddingEnd = this.getViewPaddingEnd();
 
-        Paint textPaint = this.getTextPaint();
+        Rect textRect = new Rect();
 
-        canvas.drawText(this.auxText, 0, this.auxText.length(),  (this.getX() + this.getWidth() - paddingEnd), (this.getY() + this.getHeight() + paddingTop / 2) / 2, textPaint);
+        Paint textPaint = this.getTextPaint();
+        textPaint.getTextBounds(this.auxText.toString(), 0, this.auxText.length(), textRect);
+
+        int textHeight = this.pxToDp(textRect.height());
+
+        canvas.drawText(this.auxText,
+                0,
+                this.auxText.length(),
+                (this.getWidth() - paddingEnd),
+                (this.getHeight() + textHeight + paddingTop) / 2,
+                textPaint);
     }
 
     private void drawCompositeText(Canvas canvas)
@@ -335,14 +351,23 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
 
     private void drawPrecedingText(Canvas canvas, float startOffset, Paint textPaint, String stringToDraw)
     {
+        int paddingTop = this.pxToDp(this.getPaddingTop());
         int paddingEnd = this.getViewPaddingEnd();
-        int paddingTop = this.getViewPaddingTop();
 
-        canvas.drawText(stringToDraw, 0, stringToDraw.length(),
-                (this.getX() + this.getWidth() - paddingEnd - startOffset),
-                (this.getY() + this.getHeight() + paddingTop / 2) / 2,
+        Rect textRect = new Rect();
+
+        textPaint.getTextBounds(this.auxText.toString(), 0, this.auxText.length(), textRect);
+
+        int textHeight = this.pxToDp(textRect.height());
+
+        canvas.drawText(stringToDraw,
+                0,
+                stringToDraw.length(),
+                (this.getWidth() - paddingEnd - startOffset),
+                (this.getHeight() + textHeight + paddingTop) / 2,
                 textPaint);
     }
+
 
     private ArrayList<BoldText> splitStringsForBoldSeparation(String originalString, ArrayList<Pair<Integer, Integer>> boldTags)
     {
@@ -528,7 +553,7 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
         }
     }
 
-//    private float calculateAlphaPercentageFromColor(int currentColorInt) { return (((float) Color.alpha(currentColorInt)) * 100 / 255) / 100; }
+    //    private float calculateAlphaPercentageFromColor(int currentColorInt) { return (((float) Color.alpha(currentColorInt)) * 100 / 255) / 100; }
     private float calculateAlphaPercentage(int alpha)
     {
         return (((float)alpha) * 100 / 255) / 100;
@@ -556,9 +581,14 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
         return pixels * screenDensity;
     }
 
-    private float getLoadingCircleRadius()
+    public int dpToPx(int dp)
     {
-        return this.getDpFromPixels(SwissArmyKnifeButton.LOADING_CIRCLE_RADIUS);
+        return (int) (dp * this.getScreenDensity());
+    }
+
+    public int pxToDp(int px)
+    {
+        return (int) (px / this.getScreenDensity());
     }
 
     private float getScreenDensity()
@@ -573,6 +603,12 @@ public class SwissArmyKnifeButton extends android.support.v7.widget.AppCompatBut
             super.setTextAlignment(textAlignment);
         }
         // Don't do anything whenever the text is not singleLine. Simply ignore Alignment.
+    }
+
+    private int getScaledRadius(Canvas canvas)
+    {
+        return (int) ((canvas.getWidth() > canvas.getHeight() ?
+                canvas.getHeight() : canvas.getWidth()) * SwissArmyKnifeButton.loadingCircleRadiusScalingFactor);
     }
 
     private class BoldText
